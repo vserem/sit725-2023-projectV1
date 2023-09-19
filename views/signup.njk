@@ -1,0 +1,41 @@
+{% extends "formsLayout.njk" %}
+{% block form %}
+<form class="bg-dark shadow p-3  col-12 col-sm-12 col-md-4 rounded" action="/auth/signup" method="post">
+  <h2 class="text-center p-2 p-md-3 fw-bolder fs-md-1 fs-4 text-success">SignUp</h2>
+  <p class="fs-5 fw-bold text-success text-center">Create an account!</p>
+  {% if messages.error %}
+  <div class="alert alert-danger text-center">
+    {{ messages.error }}
+  </div>
+  {% endif %}
+
+  {% if messages.success %}
+  <div class="alert alert-success text-center">
+    {{ messages.success }}
+  </div>
+  {% endif %}
+
+  <div class="py-3">
+    <label class="text-success fw-bold">Email ID</label>
+    <input type="email" name="email" class="form-control w-100 shadow-none " placeholder="Email ID">
+  </div>
+  <div class="py-3">
+    <label class="text-success fw-bold">Password</label>
+    <input type="password" name="password" class="form-control w-100 shadow-none" placeholder="Password">
+  </div>
+  <div class="py-3">
+    <label class="text-success fw-bold">Account Type</label>
+    <select class="form-select" name="role" required>
+      <option value="resident" selected>Resident</option>
+      <option value="caregiver">Care Giver</option>
+    </select>
+  </div>
+  <div class="p-2">
+    <p class="text-white">Already have an account?<a class="text-decoration-none px-2" href="/auth/signin">SignIn</a>
+    </p>
+  </div>
+  <div class="py-3 py-md-5 ">
+    <button type="submit" class="btn btn-success w-100 fw-bold shadow-none">SignUp</button>
+  </div>
+</form>
+{% endblock %}

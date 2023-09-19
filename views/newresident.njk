@@ -1,0 +1,164 @@
+{% extends "formsLayout.njk" %}
+
+{% block form %}
+<form class="bg-white my-3 shadow p-3  col-12 col-md-8 rounded" action="/resident" method="post">
+    <h2 class="text-center p-2 p-md-3 fw-bolder fs-md-1 fs-4 text-success">Add Resident Form</h2>
+    <p class="fw-bold text-success text-center">Provide all the information</p>
+
+    {% if messages.error %}
+    <div class="alert alert-danger text-center">
+        {{ messages.error }}
+    </div>
+    {% endif %}
+
+    {% if messages.success %}
+    <div class="alert alert-success text-center">
+        {{ messages.success }}
+    </div>
+    {% endif %}
+
+
+    <div class="row py-2">
+        <div class="accordion" id="ResidentForm">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="personalDetails">
+                    <button class="accordion-button  shadow-none fw-bold text-dark" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#residentInformation" aria-expanded="true"
+                        aria-controls="residentInformation">
+                        Resident Information
+                    </button>
+                </h2>
+                <div id="residentInformation" class="accordion-collapse collapse show" aria-labelledby="personalDetails"
+                    data-bs-parent="#ResidentForm">
+                    <div class="accordion-body">
+                        <div class="row py-2">
+                            <div class="col">
+                                <label class="text-success fw-bold">Full Name</label>
+                                <input required type="text" name="fullName" class="form-control w-100 shadow-none"
+                                    placeholder="Full Name">
+                            </div>
+                            <div class="col">
+                                <label class="text-success fw-bold">Date of Birth</label>
+                                <input required type="date" max="1970-12-01"  min="1900-01-01" name="dateOfBirth" class="form-control w-100 shadow-none"
+                                    placeholder="Date of Birth">
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col">
+                                <label class="text-success fw-bold">Address</label>
+                                <input required type="text" name="address" class="form-control w-100 shadow-none"
+                                    placeholder="Address">
+                            </div>
+                            <div class="col">
+                                <label class="text-success fw-bold">Phone</label>
+                                <input required type="tel" name="phone" class="form-control w-100 shadow-none"
+                                    placeholder="Phone">
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col">
+                                <label class="text-success fw-bold">Email Address</label>
+                                <input required type="email" name="email" class="form-control w-100 shadow-none"
+                                    placeholder="Email Address">
+                            </div>
+                            <div class="col">
+                                <label class="text-success fw-bold">Gender</label>
+                                <select class="form-select" name="gender" required>
+                                    <option value="male" selected>Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="kinDetails">
+                    <button class="accordion-button collapsed shadow-none fw-bold text-dark" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#nextOfKin" aria-expanded="true"
+                        aria-controls="collapseOne">
+                        Next of Kin Information
+                    </button>
+                </h2>
+                <div id="nextOfKin" class="accordion-collapse collapse " aria-labelledby="kinDetails"
+                    data-bs-parent="#ResidentForm">
+                    <div class="accordion-body ">
+                        <div class="row py-2">
+                            <div class="col">
+                                <label class="text-success fw-bold">Kin's Name</label>
+                                <input required type="text" name="kinName" class="form-control w-100 shadow-none"
+                                    placeholder="Kin's Name">
+                            </div>
+                            <div class="col">
+                                <label class="text-success fw-bold">Relationship</label>
+                                <select required class="form-select" name="relationship" >
+                                    <option value="spouce">Spouce</option>
+                                    <option value="child">Child</option>
+                                    <option value="grandchild">Grand Child</option>
+                                    <option value="sibling">Sibling</option>
+                                    <option value="nephew">Nephew</option>
+                                    <option value="niece">Niece</option>
+                                    <option value="caregiver">Care Giver</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="row py-3">
+                            <div class="col">
+                                <label class="text-success fw-bold">Kin's Phone</label>
+                                <input required type="text" name="kinPhone" class="form-control w-100 shadow-none"
+                                    placeholder="Kin's Phone">
+                            </div>
+
+
+                            <div class="col">
+                                <label class="text-success fw-bold">Kin's Email</label>
+                                <input required type="email" name="kinEmail" class="form-control w-100 shadow-none"
+                                    placeholder="Kin's Email Address">
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="medicalHistory">
+                    <button class="accordion-button collapsed fw-bold text-dark shadow-none" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                        aria-controls="collapseTwo">
+                        Medical History
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="medicalHistory"
+                    data-bs-parent="#accordionExample">
+                    <div class="row py-2">
+                        <div class="accordion-body">
+                            <div class="col">
+                                <label class="text-success fw-bold">Allergies</label>
+                                <p class="small text-dark">Separate each input with comma</p>
+                                <input required type="text" name="allergies" class="form-control w-100 shadow-none"
+                                    placeholder="Allergies">
+                            </div>
+                            <div class="col">
+                                <label class="text-success fw-bold">Medical Conditions</label>
+                                <p class="small text-dark">Separate each input with comma</p>
+                                <input required type="text" name="medicalConditions" class="form-control w-100 shadow-none"
+                                    placeholder="Medical Conditions">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class=" row py-2 w-50 mx-auto">
+                    <button type="submit" class="btn btn-dark   fw-bold">Add</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</form>
+{% endblock %}

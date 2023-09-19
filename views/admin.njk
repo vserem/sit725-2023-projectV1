@@ -1,0 +1,81 @@
+<main>
+  <div class="container w-100 ">
+    <h3 class="text-center text-dark fw-bold p-5">{{user.role | capitalize}} Dashboard</h3>
+    <div class=" row fw-bold text-dark ">
+      <div class="rounded col m-2 bg-secondary p-3 text-center ">
+        <p class="fs-3 fw-bold">Residents</p>
+        <p class="fs-1">{{residents.length}}</p>
+      </div>
+      <div class="rounded col m-2 bg-secondary p-3 text-center ">
+        <p class="fs-3 fw-bold">Care Givers</p>
+        <p class="fs-1">{{residents.length}}</p>
+      </div>
+      <div class="rounded col m-2 bg-secondary p-3 text-center ">
+        <p class="fs-3 fw-bold">Care Plans</p>
+        <p class="fs-1">{{residents.length}}</p>
+      </div>
+    </div>
+    <div class="row py-3 bg-dark mt-5">
+      <table class="table text-light rounded">
+        <div class="d-flex justify-content-between">
+          <p class="p-2 fs-4 fw-bolder text-success">List of Residents</p>
+          <div>
+            <a type="button" href="/resident/new" class="btn btn-success text-white" >
+              Add Resident
+            </a>
+          </div>
+        </div>
+        <thead>
+          <tr class="text-success">
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Date Admitted</th>
+            <th scope="col">Gender</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for resident in residents %}
+          <tr>
+            <th scope="row">{{resident._id}}</th>
+            <td>{{resident.full_name}}</td>
+            <td>{{resident.admission_date}}</td>
+            <td>{{resident.gender}}</td>
+          </tr>
+          {% endfor %}
+          
+        </tbody>
+      </table>
+
+    </div>
+
+    <div class="row py-3 bg-dark mt-5">
+      <table class="table text-light rounded">
+        <div class="d-flex justify-content-between">
+          <p class="p-2 fs-4 fw-bolder text-success">List of Care Givers</p>
+          
+        </div>
+        <thead>
+          <tr class="text-success">
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Date Admitted</th>
+            <th scope="col">Gender</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for resident in residents %}
+          <tr>
+            <th scope="row">{{resident._id}}</th>
+            <td>{{resident.full_name}}</td>
+            <td>{{resident.admission_date}}</td>
+            <td>{{resident.gender}}</td>
+          </tr>
+          {% endfor %}
+          
+        </tbody>
+      </table>
+
+    </div>
+    
+  </div>
+</main>

@@ -1,0 +1,10 @@
+{% extends "base.njk" %}
+
+{% block content %}
+{% if user.role =='admin' %}
+{% include "admin.njk" %}
+{% elif user.role == 'caregiver' %}
+  {% include "caregiver.njk" %}
+{% endif %}
+  
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends "base.njk" %}
+
+{% block content %}
+<main>
+    <div class="p-5 bg-light">
+        {% if profile %}
+        {%else%}
+        <div class="alert alert-danger text-center">
+            Complete your Profile
+        </div>
+        {% endif %}
+
+
+        <form method="post" class="p-2 col-md-6 mx-auto" action="/auth/password_change">
+            <h2 class="text-center p-2 p-md-3 fw-bolder fs-md-1 fs-4 text-success">User Profile</h2>
+            <div class="py-3">
+                <label class="text-dark fw-bold" for="">Email:</label>
+                <input type="email" disabled value="{{user.email}}" name="email" class="form-control w-100 shadow-none "
+                    placeholder="Email Id">
+            </div>
+            <div class="py-3">
+                <label class="text-dark fw-bold" for="">Password:</label>
+                <input type="password" placeholder="New Password" name="password"
+                    class="form-control w-100 shadow-none ">
+            </div>
+            <div class="py-3 py-md-5 mx-auto">
+                <button type="submit" class="btn btn-success border-none w-50 fw-bold shadow-none">Update</button>
+            </div>
+        </form>
+        <div class="p-3"></div>
+        <form method="post" class="p-2 col-md-6 mx-auto" action="/profile">
+            <h2 class="text-center p-2 p-md-3 fw-bolder fs-md-1 fs-5 text-success">Personal Details</h2>
+            <div class="row py-2">
+                <div class="col">
+                    <label class="text-success fw-bold">Full Name</label>
+                    <input value="{{profile.fullName}}" required type="text" name="fullName"
+                        class="form-control w-100 shadow-none" placeholder="Full Name">
+                </div>
+                <div class="col">
+                    <label class="text-success fw-bold">Date of Birth</label>
+                    <input value="{{profile.dateOfBirth}}" required type="date" max="1970-12-01" min="1900-01-01"
+                        name="dateOfBirth" class="form-control w-100 shadow-none" placeholder="Date of Birth">
+                    <p class="px-5">Current Value:{{profile.dateOfBirth}}</p>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col">
+                    <label class="text-success fw-bold">Address</label>
+                    <input required type="text" value="{{profile.address}}" name="address"
+                        class="form-control w-100 shadow-none" placeholder="Address">
+                </div>
+                <div class="col">
+                    <label class="text-success fw-bold">Phone</label>
+                    <input required type="tel" value="{{profile.phone}}" name="phone"
+                        class="form-control w-100 shadow-none" placeholder="Phone">
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col">
+                    <label class="text-success fw-bold">Email Address</label>
+                    <input required type="email" disabled value="{{user.email}}" name="email"
+                        class="form-control w-100 shadow-none" placeholder="Email Address">
+                </div>
+                <div class="col">
+                    <label class="text-success fw-bold">Gender</label>
+                    <select class="form-select" name="gender" required>
+                        <option value="male" selected>Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <p class="px-5">Current Value:{{profile.gender}}</p>
+                </div>
+            </div>
+            <div class="py-3 py-md-5 mx-auto">
+                <button type="submit" class="btn btn-success border-none w-50 fw-bold shadow-none">Update
+                    Profile</button>
+            </div>
+        </form>
+
+    </div>
+</main>
+
+{% endblock %}

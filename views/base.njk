@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <!--Import Bootstrap-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/stylesheets/main.css">
+  <title> {{title}} </title>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top pt-5  ">
+      <div class="container-fluid">
+        <button class="navbar-toggler border-0 shadow-none " type="button" data-bs-toggle="offcanvas" href="#mobilemenu"
+          aria-label="Toggle navigation">
+          <i class="bi bi-list text-success fs-1"></i>
+        </button>
+        <a class="navbar-brand fw-bolder fs-4" href="#">ACMS</a>
+        <div class="d-none d-md-flex ">
+          <ul class="navbar-nav mr-auto  mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/dashboard">Dashboard</a>
+            </li>
+           
+          </ul>
+
+
+
+        </div>
+        <ul class="navbar-nav  ml-auto mb-2 mb-lg-0">
+          {% if user %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{user.email | capitalize}}
+            </a>
+            <ul class="dropdown-menu bg-dark">
+              <li><a class="dropdown-item" href="/profile">Profile</a></li>
+              <li><a class="dropdown-item" href="/auth/signout">SignOut</a></li>
+
+            </ul>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="/auth/signin">SignIn</a>
+          </li>
+          {% endif %}
+
+        </ul>
+      </div>
+    </nav>
+
+    <div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="mobilemenu"
+      aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header shadow">
+        <h5 class="offcanvas-title text-center fw-bold w-100 " id="offcanvasExampleLabel">ACMS</h5>
+        <button type="button" class="btn-close text-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  {% block content %}
+
+  {% endblock %}
+
+  <footer class="bg-dark text-light p-3 mt-5">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md p-3">
+          <h5 class="white-text">Links</h5>
+          <div>
+            <p><a href="#!">Home</a></p>
+            <p><a href="#!">Residents</a></p>
+            <p><a href="#!">Care Givers</a></p>
+          </div>
+        </div>
+
+        <div class="col-md p-3">
+          <h5 class="white-text">Contacts</h5>
+          <div class="text-white">
+            <p><a class="grey-text text-lighten-3 " href="#!"><i class="bi bi-telephone me-2"></i>0612345678</a></p>
+            <p><a class="grey-text text-lighten-3 " href="#!"><i class="bi bi-twitter-x me-2"></i>ACMS</a></p>
+            <p><a href="#!"><i class="bi bi-instagram me-2"></i>ACMS</a></p>
+            <p><a href="#!"><i class="bi bi-facebook me-2"></i>ACMS</a></p>
+          </div>
+        </div>
+        <div class="col-md p-3">
+          <h5 class="white-text">Servces</h5>
+          <div class="text-primary">
+            <p><a href="#!">Residential Care</a></p>
+            <p><a href="#!">Home Care</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container p-4 text-center">
+        © 2023 ACMS
+      </div>
+
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="/javascripts/index.js"></script>
+</body>
+
+</html>
