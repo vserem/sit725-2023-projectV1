@@ -1,6 +1,8 @@
 const { default: mongoose } = require("mongoose");
 const bcrypt = require("bcrypt")
 
+
+//creating a login database
 const schema = new mongoose.Schema({
     email: { type: String, unique: true, index: true },
     password: String,

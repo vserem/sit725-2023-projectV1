@@ -1,3 +1,4 @@
+//creating admin login page
 var express = require('express');
 const checkUserRole = require('../middlewares');
 var router = express.Router();
