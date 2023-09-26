@@ -40,6 +40,7 @@ app.use(require('express-session')({
 
   }
 }));
+// using cookies
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());

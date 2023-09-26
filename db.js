@@ -1,7 +1,8 @@
-const { default: mongoose } = require("mongoose");
+ const { default: mongoose } = require("mongoose");
 
 let db;
 
+// connecting to mango db
 mongoose.connect("mongodb+srv://acms:_V56H4yD$2N7.5X@cluster0.5mtadof.mongodb.net/ACMS?retryWrites=true&w=majority")
     .then(db => {
         db = db
