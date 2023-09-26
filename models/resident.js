@@ -1,6 +1,6 @@
 const { default: mongoose } = require("mongoose");
 
-
+// creating data 
 const schema = new mongoose.Schema({
     user: { type: mongoose.SchemaTypes.ObjectId, ref: "User", required: false, set: v => v === '' ? null : v },
     full_name: { type: String, required: true },
