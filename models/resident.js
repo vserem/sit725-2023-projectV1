@@ -1,10 +1,10 @@
 const { default: mongoose } = require("mongoose");
 
-// creating data 
+
 const schema = new mongoose.Schema({
     user: { type: mongoose.SchemaTypes.ObjectId, ref: "User", required: false, set: v => v === '' ? null : v },
-    full_name: { type: String, required: true },
-    date_of_birth: { type: Date, required: true },
+    fullName: { type: String, required: true },
+    dateOfBirth: { type: Date, required: true },
     address: String,
     phone: String,
     gender: { type: String, required: true, enum: ["male", "female", "other"] },
@@ -16,10 +16,10 @@ const schema = new mongoose.Schema({
     },
     allergies: [String],
     medicalConditions: [String],
-    admission_date: { type: Date, required: true, default: Date.now },
+    admissionDate: { type: Date, required: true, default: Date.now },
 }, { timestamps: true })
 
-const Resident = new mongoose.model("Resident", schema);
+const Resident = mongoose.model("Resident", schema);
 
 module.exports = Resident;
 

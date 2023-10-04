@@ -1,8 +1,6 @@
 const { default: mongoose } = require("mongoose");
 const bcrypt = require("bcrypt")
 
-
-//creating a login database
 const schema = new mongoose.Schema({
     email: { type: String, unique: true, index: true },
     password: String,
@@ -19,7 +17,6 @@ schema.pre('save', function (next) {
 
         bcrypt.hash(user.password, salt, (err, hash) => {
             if (err) return next(err);
-
             user.password = hash;
             next();
         });
@@ -27,7 +24,5 @@ schema.pre('save', function (next) {
 });
 
 const User = mongoose.model('User', schema);
-
-
 
 module.exports = User;

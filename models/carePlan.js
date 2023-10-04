@@ -1,32 +1,37 @@
-const { default: mongoose } = require("mongoose");
+const mongoose = require("mongoose");
 
 const carePlanSchema = new mongoose.Schema({
     // Resident for whom the care plan is created (reference to the Resident model)
     resident: {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Resident',
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Resident",
         required: true,
     },
-    // Care plan title or name (e.g., "Monthly Care Plan," "Special Needs Plan")
+    careGiver: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "CareGiver",
+        required: true,
+    },
+    // Care plan title or name
     title: String,
 
-    // Date when the care plan was created
-    dateCreated: {
-        type: Date,
-        default: Date.now,
-    },
+    // List of care goals
+    goals: [String],
 
-    // List of care goals and interventions
-    goals: [{
-        goal: String,
-        interventions: [String],
-    }],
-
-    // Additional notes or instructions related to the care plan
-    notes: String,
+    // List of tasks or activities associated with the care plan
+    activities: [
+        {
+            description: String,
+            dueDate: Date,
+            completed: {
+                type: Boolean,
+                default: false,
+            },
+        },
+    ],
 });
 
 // Create the Care Plan model
-const CarePlan = mongoose.model('CarePlan', carePlanSchema);
+const CarePlan = mongoose.model("CarePlan", carePlanSchema);
 
 module.exports = CarePlan;

@@ -23,8 +23,8 @@ router.post('/', async function (req, res, next) {
     const medicalConditions = String(body.medicalConditions).split(",")
     try {
         const result = await Resident.create({
-            full_name: body.fullName,
-            date_of_birth: body.dateOfBirth,
+            fullName: body.fullName,
+            dateOfBirth: body.dateOfBirth,
             address: body.address,
             phone: body.phone,
             gender: body.gender,

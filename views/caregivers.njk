@@ -1,0 +1,54 @@
+{% extends "base.njk" %}
+
+
+{% block content %}
+    <main>
+  <div class="container w-100 ">
+    <div class="row py-3 bg-dark mt-5">
+      <table class="table text-light rounded">
+        <div class="d-flex justify-content-between">
+          <p class="p-2 fs-4 fw-bolder text-success">List of Caregivers</p>
+          <div>
+            <a type="button" href="/admin/newcaregiver" class="btn btn-success text-white" >
+              New caregiver
+            </a>
+          </div>
+        </div>
+        <thead>
+          <tr class="text-success">
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Address</th>
+            <th scope="col">Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for caregiver in caregivers %}
+          <tr>
+            <th scope="row">{{loop.index}}</th>
+            <td>
+              <a href="/admin/caregivers/{{caregiver._id}}">{{caregiver.fullName}}</a>
+            </td>
+            <td>{{caregiver.email}}</td>
+            <td>{{caregiver.gender}}</td>
+            <td>{{caregiver.address}}</td>
+            <td>{{caregiver.phone}}</td>
+            
+          </tr>
+          {% endfor %}
+          
+        </tbody>
+      </table>
+
+    </div>
+
+    
+
+
+    
+  </div>
+</main>
+
+{% endblock %}

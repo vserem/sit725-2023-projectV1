@@ -1,25 +1,18 @@
-<main>
+{% extends "base.njk" %}
+
+
+{% block content %}
+    <main>
   <div class="container w-100 ">
-    <h5 class="text-center text-dark fw-bold p-5">{{user.role | capitalize}} Dashboard</h5>
-    <div class=" row fw-bold text-dark ">
-      <div class="rounded col m-2 bg-secondary p-3 text-center ">
-        <p class="fs-3 fw-bold">Residents</p>
-        <p class="fs-1">{{residents.length}}</p>
-      </div>
-      <div class="rounded col m-2 bg-secondary p-3 text-center ">
-        <p class="fs-3 fw-bold">Care Givers</p>
-        <p class="fs-1">{{caregivers.length}}</p>
-      </div>
-      <div class="rounded col m-2 bg-secondary p-3 text-center ">
-        <p class="fs-3 fw-bold">Care Plans</p>
-        <p class="fs-1">{{careplans.length}}</p>
-      </div>
-    </div>
     <div class="row py-3 bg-dark mt-5">
       <table class="table text-light rounded">
         <div class="d-flex justify-content-between">
-          <p class="p-2 fs-4 fw-bolder text-success">List of Assigned Residents</p>
-
+          <p class="p-2 fs-4 fw-bolder text-success">List of Residents</p>
+          <div>
+            <a type="button" href="/admin/newresident" class="btn btn-success text-white" >
+              New Resident
+            </a>
+          </div>
         </div>
         <thead>
           <tr class="text-success">
@@ -29,6 +22,7 @@
             <th scope="col">Address</th>
             <th scope="col">Phone</th>
             <th scope="col">Date Admitted</th>
+            <tr scope="col"></tr>
           </tr>
         </thead>
         <tbody>
@@ -40,15 +34,18 @@
             <td>{{resident.address}}</td>
             <td>{{resident.phone}}</td>
             <td>{{resident.admissionDate}}</td>
+            <td>
+              <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#assignResident">Assign</button>
+            </td>
           </tr>
           {% endfor %}
-
+          
         </tbody>
       </table>
 
     </div>
 
-    <!-- Modal -->
+     <!-- Modal -->
     <div class="modal fade" id="assignResident" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
       aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -74,6 +71,8 @@
       </div>
     </div>
 
-
+    
   </div>
 </main>
+
+{% endblock %}

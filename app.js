@@ -9,10 +9,10 @@ const flash = require('connect-flash');
 require("./db")
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var adminRouter = require('./routes/admin');
 const residentsRouter = require("./routes/residents")
 const authRouter = require("./routes/auth")
-const caregiverRoutes =  require("./routes/caregivers")
+const caregiverRoutes = require("./routes/caregivers")
 
 var app = express();
 
@@ -40,7 +40,6 @@ app.use(require('express-session')({
 
   }
 }));
-// using cookies
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());
@@ -55,10 +54,10 @@ require('./passport')(passport);
 
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/admin', adminRouter);
 app.use("/auth", authRouter)
 app.use("/resident", residentsRouter)
-app.use("/caregiver",caregiverRoutes)
+app.use("/caregiver", caregiverRoutes)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

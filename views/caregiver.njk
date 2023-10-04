@@ -9,45 +9,10 @@
       </div>
       <div class="rounded col m-2 bg-secondary p-3 text-center ">
         <p class="fs-3 fw-bold">Assigned Residents</p>
-        <p class="fs-1">{{residents.length}}</p>
+        <p class="fs-1">{{caregiver.assignedResidents.length}}</p>
       </div>
-      <div class="rounded col m-2 bg-secondary p-2 ">
-        <p>Stat 3</p>
-      </div>
+      
     </div>
-    <div class="row py-3 bg-dark mt-5">
-      <table class="table text-light rounded">
-        <div class="d-flex justify-content-between">
-          <p class="p-2 fs-4 fw-bolder text-success">List of Residents</p>
-          <div>
-            <a type="button" href="/resident/new" class="btn btn-success text-white" >
-              Add Resident
-            </a>
-          </div>
-        </div>
-        <thead>
-          <tr class="text-success">
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Date Admitted</th>
-            <th scope="col">Gender</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for resident in residents %}
-          <tr>
-            <th scope="row">{{loop.index}}</th>
-            <td>{{resident.full_name}}</td>
-            <td>{{resident.admission_date}}</td>
-            <td>{{resident.gender}}</td>
-          </tr>
-          {% endfor %}
-          
-        </tbody>
-      </table>
-
-    </div>
-
     <div class="row py-3 bg-dark mt-5">
       <table class="table text-light rounded">
         <div class="d-flex justify-content-between">
@@ -63,11 +28,11 @@
           </tr>
         </thead>
         <tbody>
-          {% for resident in residents %}
+          {% for resident in caregiver.assignedResidents %}
           <tr>
             <th scope="row">{{loop.index}}</th>
-            <td>{{resident.full_name}}</td>
-            <td>{{resident.admission_date}}</td>
+            <td>{{resident.fullName}}</td>
+            <td>{{resident.admissionDate}}</td>
             <td>{{resident.gender}}</td>
           </tr>
           {% endfor %}
@@ -76,6 +41,8 @@
       </table>
 
     </div>
+
+    
     
   </div>
 </main>

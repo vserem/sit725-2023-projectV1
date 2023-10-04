@@ -2,6 +2,7 @@ var express = require('express');
 const Resident = require('../models/resident');
 const checkUserRole = require('../middlewares');
 const Profile = require('../models/profile');
+const CareGiver = require('../models/careGiver');
 var router = express.Router();
 
 /* GET Home Page. */
@@ -11,9 +12,13 @@ router.get('/', function (req, res) {
 
 /* GET Dashboard. */
 router.get('/dashboard', checkUserRole(["caregiver", "admin"]), async function (req, res) {
+  if (req.user.role==='admin') {
+    return res.redirect("/admin/dashboard")
+  }
   try {
     const residents = await Resident.find()
-    return res.render('dashboard.njk', { title: 'ACMS | Dashboard', user: req.user, residents: residents });
+    const caregiver = await CareGiver.findOne({user:req.user}).populate("assignedResidents");
+    return res.render('dashboard.njk', { title: 'ACMS | Dashboard', user: req.user, caregiver, residents });
   } catch (error) {
     return res.render('dashboard.njk', { title: 'ACMS | Dashboard', user: req.user });
   }
