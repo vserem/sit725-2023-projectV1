@@ -2,9 +2,66 @@
 
 
 {% block content %}
-    <main>
-        <div class="p5">
-            <p class="p-4">{{resident.fullName}}</p>
-        </div>
-    </main>
+<main class="container py-5">
+    <div class="p-5 shadow bg-dark text-success">
+        <table class="table table-borderless">
+            <p class="fs-4 text-center p-4 font-bold">{{caregiver.fullName}} Details</p>
+            <tbody class="text-white">
+                <tr>
+                    <td>ID</td>
+                    <td>{{caregiver._id}}</td>
+                </tr>
+                <tr>
+                    <td>Full Name</td>
+                    <td>{{caregiver.fullName}}</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>{{caregiver.email}}</td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td>{{caregiver.address}}</td>
+                </tr>
+                <tr>
+                    <td>Phone</td>
+                    <td>{{caregiver.phone}}</td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td>{{caregiver.gender}}</td>
+                </tr>
+
+                <tr>
+                    <td>assigned</td>
+                    <td>Name:</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+     <!-- Modal -->
+     <div class="modal fade" id="assignResident" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+     <div class="modal-dialog">
+       <div class="modal-content">
+         
+         <div class="modal-body">
+           <form action="/careplans/" method="post">
+             <select name="residentId" class="form-select" aria-label="Default select example">
+               <option selected>Select </option>
+               {% for resident in residents %}
+               <option value="{{resident._id}}">{{resident.fullName}}</option>
+               {% endfor %}
+             </select>
+             <div class="py-5">
+               <button type="submit" class="btn btn-success">Assign</button>
+             </div>
+           </form>
+         </div>
+         
+       </div>
+     </div>
+   </div>
+</main>
 {% endblock %}

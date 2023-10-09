@@ -13,6 +13,8 @@ var adminRouter = require('./routes/admin');
 const residentsRouter = require("./routes/residents")
 const authRouter = require("./routes/auth")
 const caregiverRoutes = require("./routes/caregivers")
+const careplansRoutes = require("./routes/careplans");
+const checkUserRole = require('./middlewares');
 
 var app = express();
 
@@ -54,10 +56,11 @@ require('./passport')(passport);
 
 
 app.use('/', indexRouter);
-app.use('/admin', adminRouter);
+app.use('/admin', checkUserRole(['admin']) , adminRouter);
 app.use("/auth", authRouter)
 app.use("/resident", residentsRouter)
 app.use("/caregiver", caregiverRoutes)
+app.use("/careplans", careplansRoutes)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

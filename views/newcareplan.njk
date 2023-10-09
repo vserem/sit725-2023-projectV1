@@ -1,0 +1,56 @@
+{% extends "formsLayout.njk" %}
+
+{% block form %}
+<form class="bg-white my-3 shadow p-3  col-12 col-md-8 rounded" action="/admin/newcaregiver" method="post">
+    <h2 class="text-center p-2 p-md-3 fw-bolder fs-md-1 fs-4 text-success">Add Care Giver Form</h2>
+    <p class="fw-bold text-success text-center">Provide all the information</p>
+
+    {% if messages.error %}
+    <div class="alert alert-danger text-center">
+        {{ messages.error }}
+    </div>
+    {% endif %}
+
+    {% if messages.success %}
+    <div class="alert alert-success text-center">
+        {{ messages.success }}
+    </div>
+    {% endif %}
+
+
+    <div class="row py-2">
+        <div class="py-2">
+            <label class="text-success fw-bold">Title</label>
+            <input required type="text" name="title" class="form-control w-100 shadow-none"
+                placeholder="Address">
+        </div>
+
+        <div class="py-2">
+            <label class="text-success fw-bold">Goals</label>
+            <p class="small text-dark">Separate each input with comma</p>
+            <input required type="text" name="goals" class="form-control w-100 shadow-none"
+                placeholder="Careplan Goals">
+        </div>
+
+        <div class="py-2">
+            <label class="text-success fw-bold">Activities</label>
+            <p class="small text-dark">Separate each input with comma</p>
+            <input required type="text" name="activities" class="form-control w-100 shadow-none"
+                placeholder="Careplan Activities">
+        </div>
+
+        <div class="py-2">
+            <label class="text-success fw-bold">Resident</label>
+            <input required type="text" name="residentId" class="form-control w-100 shadow-none"
+                placeholder="Resident">
+        </div>
+
+        <div class="py-2">
+            <label class="text-success fw-bold">Caregiver</label>
+            <input required type="text" name="caregiverId" class="form-control w-100 shadow-none"
+                placeholder="Caregiver">
+        </div>
+    </div>
+
+</form>
+{% endblock %}

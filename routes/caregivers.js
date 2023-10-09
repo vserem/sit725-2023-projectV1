@@ -16,4 +16,5 @@ router.get('/residents', async function (req, res) {
 });
 
 
+
 module.exports = router;

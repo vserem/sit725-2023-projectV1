@@ -48,47 +48,47 @@
                     <td>Resident Address</td>
                     <td>Resident Phone</td>
                     <td>Date Admitted</td>
-                </tr> 
+                </tr>
             </thead>
             <tbody class="text-white">
                 {% for resident in caregiver.assignedResidents %}
-                
-                    <tr>
-                        <td>{{resident.fullName}}</td>
-                        <td>{{resident.address}}</td>
-                       <td>{{resident.phone}}</td> 
-                        <td>{{resident.admissionDate}}</td>
-                    </tr>
-                    
+
+                <tr>
+                    <td>{{resident.fullName}}</td>
+                    <td>{{resident.address}}</td>
+                    <td>{{resident.phone}}</td>
+                    <td>{{resident.admissionDate}}</td>
+                </tr>
+
                 {% endfor %}
             </tbody>
         </table>
 
     </div>
 
-     <!-- Modal -->
-     <div class="modal fade" id="assignResident" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-     <div class="modal-dialog">
-       <div class="modal-content">
-         
-         <div class="modal-body">
-           <form action="/admin/caregivers/{{caregiver._id}}/assign" method="post">
-             <select name="residentId" class="form-select" aria-label="Default select example">
-               <option selected>Select Resident to assign</option>
-               {% for resident in residents %}
-               <option value="{{resident._id}}">{{resident.fullName}}</option>
-               {% endfor %}
-             </select>
-             <div class="py-5">
-               <button type="submit" class="btn btn-success">Assign</button>
-             </div>
-           </form>
-         </div>
-         
-       </div>
-     </div>
-   </div>
+    <!-- Modal -->
+    <div class="modal fade" id="assignResident" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <form action="/admin/caregivers/{{caregiver._id}}/assign" method="post">
+                        <select name="residentId" class="form-select" aria-label="Default select example">
+                            <option selected>Select Resident to assign</option>
+                            {% for resident in residents %}
+                            <option value="{{resident._id}}">{{resident.fullName}}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="py-5">
+                            <button type="submit" class="btn btn-success">Assign</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </main>
 {% endblock %}
 

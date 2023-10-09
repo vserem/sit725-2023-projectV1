@@ -7,29 +7,20 @@ const carePlanSchema = new mongoose.Schema({
         ref: "Resident",
         required: true,
     },
-    careGiver: {
+    caregiver: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "CareGiver",
         required: true,
     },
     // Care plan title or name
     title: String,
-
     // List of care goals
     goals: [String],
 
     // List of tasks or activities associated with the care plan
-    activities: [
-        {
-            description: String,
-            dueDate: Date,
-            completed: {
-                type: Boolean,
-                default: false,
-            },
-        },
-    ],
-});
+    activities: [String]
+},{timestamps:true});
+
 
 // Create the Care Plan model
 const CarePlan = mongoose.model("CarePlan", carePlanSchema);

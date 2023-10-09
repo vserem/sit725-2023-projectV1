@@ -1,4 +1,3 @@
-
 <main>
   <div class="container w-100 ">
     <h3 class="text-center text-dark fw-bold p-5">{{user.role | capitalize}} Dashboard</h3>
@@ -11,13 +10,15 @@
         <p class="fs-3 fw-bold">Assigned Residents</p>
         <p class="fs-1">{{caregiver.assignedResidents.length}}</p>
       </div>
-      
+
     </div>
     <div class="row py-3 bg-dark mt-5">
       <table class="table text-light rounded">
         <div class="d-flex justify-content-between">
           <p class="p-2 fs-4 fw-bolder text-success">List of Assigned Residents</p>
-          
+          <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#newCareplan">New
+            Careplan</button>
+
         </div>
         <thead>
           <tr class="text-success">
@@ -36,13 +37,58 @@
             <td>{{resident.gender}}</td>
           </tr>
           {% endfor %}
-          
+
         </tbody>
       </table>
 
     </div>
 
-    
-    
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="newCareplan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-body">
+            <form action="/careplans/" method="post">
+              <label class="text-success fw-bold">Resident</label>
+              <select name="residentId" class="form-select" aria-label="Default select example">
+                <option selected>Select Resident</option>
+                {% for resident in caregiver.assignedResidents %}
+                <option value="{{resident._id}}">{{resident.fullName}}</option>
+                {% endfor %}
+         
+              </select>
+              <div class="py-3">
+                <label class="text-success fw-bold">Careplan Title</label>
+                <input required type="text" name="title" class="form-control w-100 shadow-none"
+                  placeholder="Care Plan Title">
+              </div>
+              <div class="py-3">
+                <label class="text-success fw-bold">Goals</label>
+                <p class="small text-dark">Separate each input with comma</p>
+                <input required type="text" name="goals" class="form-control w-100 shadow-none"
+                  placeholder="CarePlan Goals">
+              </div>
+              <div class="py-3">
+                <label class="text-success fw-bold">Activities</label>
+                <p class="small text-dark">Separate each input with comma</p>
+                <input required type="text" name="activities" class="form-control w-100 shadow-none"
+                  placeholder="CarePlan Activities">
+              </div>
+
+              <div class="py-5">
+                <button type="submit" class="btn btn-success">Create</button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
   </div>
 </main>
